@@ -1,0 +1,65 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+
+class AddComic extends Component {
+    constructor(){
+        super()
+            this.state = {
+            id: '',
+            character: '',
+            title: '',
+            pageCount: '',
+            price: '',
+            cover: '',
+            purchase: '',            
+        }
+    }
+    characterAdd(val){
+        this.setState({
+            character: val
+        })
+    }
+    titleAdd(val){
+        this.setState({
+            title: val
+        })
+    }
+    pageCountAdd(val){
+        this.setState({
+            pageCount: val
+        })
+    }
+    priceAdd(val){
+        this.setState({
+            price: val
+        })
+    }
+    coverAdd(val){
+        this.setState({
+            cover: val
+        })
+    }
+    purchaseAdd(val){
+        this.setState({
+            purchase: val
+        })
+    }
+
+    render(){
+        let {character, title, pageCount, price, cover, purchase} =  this.state;
+        return (
+            <div>
+              <input className="input" onChange={e => this.characterAdd(e.target.value)}/>
+              <input className="input" onChange={e => this.titleAdd(e.target.value)}/>
+              <input className="input" onChange={e => this.pageCountAdd(e.target.value)}/>
+              <input className="input" onChange={e => this.priceAdd(e.target.value)}/>
+              <input className="input" onChange={e => this.coverAdd(e.target.value)}/>
+              <input className="input" onChange={e => this.purchaseAdd(e.target.value)}/>
+            </div>   
+        );
+    }
+}
+
+
+export default AddComics;
