@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const PORT = 9000
 const Comics = require('./Controller')
-
 const app = express()
 app.use(bodyParser.json())
 

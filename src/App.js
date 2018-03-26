@@ -4,6 +4,8 @@ import axios from 'axios';
 import AddComics from './AddComics.js';
 // import FilterComics from './Filter';
 import ComicsList from './ComicsList';
+import Head from './Header';
+import Logo from './Logo'
 
 class App extends Component {
   constructor() {
@@ -11,7 +13,8 @@ class App extends Component {
     this.state = {
       comics: [],
       option: '',
-      list: []
+      list: [],
+      quote: []
     }
 this.editComic = this.editComic.bind(this);
 this.deleteComic = this.deleteComic.bind(this);
@@ -20,6 +23,15 @@ this.filterComic = this.filterComic.bind(this);
 this.handleChange = this.handleChange.bind(this);
 this.read = this.read.bind(this);
   }
+componentDidMount() {
+  axios.get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1').then(r => {
+    this.setState({
+      quote: r.data
+    }); 
+    // console.log(r.data);
+    // console.log(this.state.quote);
+  })
+}
 
   read(comics){
     axios.put(`/api/allcomics`, comics).then(comics=>{
@@ -62,6 +74,7 @@ this.read = this.read.bind(this);
    })
     return (
       <div className="App">
+      <Head />
       <span>
       <AddComics addComic={this.addComic}/>
       </span>
@@ -69,6 +82,7 @@ this.read = this.read.bind(this);
       {/* <FilterComics filterComics={this.handleChange}/> */}
       {display}
       </div>
+      <h4>This has been a <Logo /> creation</h4>
       </div>
     );
   }
