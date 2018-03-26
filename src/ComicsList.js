@@ -9,9 +9,10 @@ render(){
            <h4>{this.props.comic.pageCount}</h4>
            <h5>{this.props.comic.price}</h5>
            <h6>{this.props.comic.purchase}</h6>
+           <h6>Own it? {this.props.comic.purchased}</h6>
            <img className="display" src={this.props.comic.cover} alt="" /><br/>
            <button onClick={()=>this.props.deleteComic(this.props.comic.id)}>Delete!</button>
-           <button onClick={()=>this.props.editComic(this.props.comic.id)}>Bought!</button>
+           <button onClick={()=>this.props.editComic(this.props.comic.id)}>Buy</button>
         </div>
     )
     }

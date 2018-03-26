@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       comics: [],
       option: '',
+      list: []
     }
 this.editComic = this.editComic.bind(this);
 this.deleteComic = this.deleteComic.bind(this);
@@ -53,7 +54,7 @@ this.read = this.read.bind(this);
     if(value!=='Select'){
     this.setState({
       option: value
-    }, this.filterComic, this.read)
+    }, this.filterComic)
   };
 }
   render() {
@@ -65,7 +66,7 @@ this.read = this.read.bind(this);
       <AddComics addComic={this.addComic}/>
       </span>
       <div>
-      <FilterComics filterComics={this.handleChange}/>
+      {/* <FilterComics filterComics={this.handleChange}/> */}
       {display}
       </div>
       </div>

@@ -11,7 +11,8 @@ class AddComics extends Component {
             pageCount: '',
             price: '',
             cover: '',
-            purchase: '',            
+            purchase: '',
+            purchased: '',            
         }
     }
     characterAdd(val){
@@ -44,9 +45,14 @@ class AddComics extends Component {
             purchase: val
         })
     }
+        purchasedAdd(val){
+            this.setState({
+                purchased: val
+            })
+        }        
 
     render(){
-        let {character, title, pageCount, price, cover, purchase} =  this.state;
+        let {character, title, pageCount, price, cover, purchase,purchased} =  this.state;
         return (
             <div>
               <input placeholder='Character' onChange={e => this.characterAdd(e.target.value)}/>
@@ -55,7 +61,8 @@ class AddComics extends Component {
               <input placeholder='Price' onChange={e => this.priceAdd(e.target.value)}/>
               <input placeholder='Link to Cover' onChange={e => this.coverAdd(e.target.value)}/>
               <input placeholder='Link to Buy' onChange={e => this.purchaseAdd(e.target.value)}/>
-              <button onClick={()=>{this.props.addComic({character, title, pageCount, price, cover, purchase})}}>Add Comic</button>
+              <input placeholder='Own it?' onChange={e => this.purchasedAdd(e.target.value)}/>
+              <button onClick={()=>{this.props.addComic({character, title, pageCount, price, cover, purchase,purchased})}}>Add Comic</button>
             </div>   
         );
     }
