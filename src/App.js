@@ -6,6 +6,7 @@ import AddComics from './AddComics.js';
 import ComicsList from './ComicsList';
 import Head from './Header';
 import Logo from './Logo'
+import Foot from './Footer'
 
 class App extends Component {
   constructor() {
@@ -19,8 +20,8 @@ class App extends Component {
 this.editComic = this.editComic.bind(this);
 this.deleteComic = this.deleteComic.bind(this);
 this.addComic = this.addComic.bind(this);
-this.filterComic = this.filterComic.bind(this);
-this.handleChange = this.handleChange.bind(this);
+// this.filterComic = this.filterComic.bind(this);
+// this.handleChange = this.handleChange.bind(this);
 this.read = this.read.bind(this);
   }
 componentDidMount() {
@@ -33,7 +34,7 @@ componentDidMount() {
   })
 }
   read(comics){
-    axios.put(`/api/allcomics`, comics).then(comics=>{
+    axios.get(`/api/allcomics`, comics).then(comics=>{
      this.setState({
        comics: comics
      })
@@ -56,18 +57,18 @@ componentDidMount() {
       comics: r.data
     }))
   }
-  filterComic(character){
-    axios.get('/api/filtercomics', {character}).then(r => {this.setState({
-      comics: r.data
-    })})
-  }
-  handleChange(value) {
-    if(value!=='Select'){
-    this.setState({
-      option: value
-    }, this.filterComic)
-  };
-}
+  // filterComic(character){
+  //   axios.get('/api/filtercomics', {character}).then(r => {this.setState({
+  //     comics: r.data
+  //   })})
+  // }
+//   handleChange(value) {
+//     if(value!=='Select'){
+//     this.setState({
+//       option: value
+//     }, this.filterComic)
+//   };
+// }
   render() {
    let display = this.state.comics.map((e,i) => { return (<ComicsList key={e.id} comic={e} deleteComic={this.deleteComic} editComic={this.editComic}/>)
    })
@@ -82,7 +83,7 @@ componentDidMount() {
       {this.state.quote}
       {display}
       </div>
-      <h4>This has been a <Logo /> creation</h4>
+      <Foot />
       </div>
     );
   }

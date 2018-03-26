@@ -3,7 +3,7 @@ import Logo from './Logo'
 import './Header.css'
 const Head = () => {
         return(
-            <div>Preme Comics <Logo/></div>
+            <div className='head'>Preme Comics <Logo/></div>
         )
     }
 

@@ -202,20 +202,20 @@ module.exports = {
         res.status(200)
         .json(comics);
     },
-    filterComic: (req,res) => {
+    // filterComic: (req,res) => {
         
-        const {character} = req.params;
-        let list = comics.filter(e => {{character}
-            if
-            (e.character === character)
-            {
-                return e;
-            }
-            console.log(list);
-    }); 
-        res.status(200)
-        .json(list);
-    },
+    //     const {character} = req.params;
+    //     let list = comics.filter(e => {{character}
+    //         if
+    //         (e.character === character)
+    //         {
+    //             return e;
+    //         }
+    //         console.log(list);
+    // }); 
+    //     res.status(200)
+    //     .json(list);
+    // },
     editComic: (req,res) => {
        const editId = req.params.id;
        const comicEdit = comics.forEach((el,i) => {
@@ -239,5 +239,8 @@ module.exports = {
             }});
         res.status(200)
         .json(comics);
+    },
+    read: (req,res) => {
+        return comics
     }
 }
