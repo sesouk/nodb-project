@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import AddComics from './AddComics.js';
-import FilterComics from './Filter';
+// import FilterComics from './Filter';
 import ComicsList from './ComicsList';
 
 class App extends Component {
