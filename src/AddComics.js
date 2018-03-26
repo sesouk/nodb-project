@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 
-class AddComic extends Component {
+class AddComics extends Component {
     constructor(){
         super()
             this.state = {
@@ -50,12 +49,13 @@ class AddComic extends Component {
         let {character, title, pageCount, price, cover, purchase} =  this.state;
         return (
             <div>
-              <input className="input" onChange={e => this.characterAdd(e.target.value)}/>
-              <input className="input" onChange={e => this.titleAdd(e.target.value)}/>
-              <input className="input" onChange={e => this.pageCountAdd(e.target.value)}/>
-              <input className="input" onChange={e => this.priceAdd(e.target.value)}/>
-              <input className="input" onChange={e => this.coverAdd(e.target.value)}/>
-              <input className="input" onChange={e => this.purchaseAdd(e.target.value)}/>
+              <input placeholder='Character' onChange={e => this.characterAdd(e.target.value)}/>
+              <input placeholder='Comic Title' onChange={e => this.titleAdd(e.target.value)}/>
+              <input placeholder='# of Pages' onChange={e => this.pageCountAdd(e.target.value)}/>
+              <input placeholder='Price' onChange={e => this.priceAdd(e.target.value)}/>
+              <input placeholder='Link to Cover' onChange={e => this.coverAdd(e.target.value)}/>
+              <input placeholder='Link to Buy' onChange={e => this.purchaseAdd(e.target.value)}/>
+              <button onClick={()=>{this.props.addComic({character, title, pageCount, price, cover, purchase})}}>Add Comic</button>
             </div>   
         );
     }
