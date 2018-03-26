@@ -26,13 +26,12 @@ this.read = this.read.bind(this);
 componentDidMount() {
   axios.get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1').then(r => {
     this.setState({
-      quote: r.data
+      quote: r.data[0].content,
     }); 
-    // console.log(r.data);
-    // console.log(this.state.quote);
+    console.log(r.data);
+    console.log(this.state.quote);
   })
 }
-
   read(comics){
     axios.put(`/api/allcomics`, comics).then(comics=>{
      this.setState({
@@ -80,6 +79,7 @@ componentDidMount() {
       </span>
       <div>
       {/* <FilterComics filterComics={this.handleChange}/> */}
+      {this.state.quote}
       {display}
       </div>
       <h4>This has been a <Logo /> creation</h4>
