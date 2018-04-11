@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Logo from './Logo'
 import './Footer.css'
 const Foot = () => {

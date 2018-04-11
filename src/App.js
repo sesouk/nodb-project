@@ -5,7 +5,6 @@ import AddComics from './AddComics.js';
 // import FilterComics from './Filter';
 import ComicsList from './ComicsList';
 import Head from './Header';
-import Logo from './Logo'
 import Foot from './Footer'
 
 class App extends Component {
@@ -15,7 +14,9 @@ class App extends Component {
       comics: [],
       option: '',
       list: [],
-      quote: []
+      quote: [],
+      user: null,
+      secureDataResponse: null,
     }
 this.editComic = this.editComic.bind(this);
 this.deleteComic = this.deleteComic.bind(this);
@@ -23,6 +24,8 @@ this.addComic = this.addComic.bind(this);
 // this.filterComic = this.filterComic.bind(this);
 // this.handleChange = this.handleChange.bind(this);
 this.read = this.read.bind(this);
+this.logout = this.logout.bind(this);
+// this.fetchSecureData = this.fetchSecureData.bind(this);
   }
 componentDidMount() {
   axios.get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1').then(r => {
@@ -57,6 +60,29 @@ componentDidMount() {
       comics: r.data
     }))
   }
+  login(){
+    const callbackUrl = encodeURIComponent(window.location.origin + '/auth/callback');
+    window.location = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/login?client=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${callbackUrl}`;
+  }
+  logout(){
+    axios.post('/api/logout').then(() => {
+      this.setState({ user: null })
+    });
+  }
+  // getMessage(error){
+  //   return error.response
+  //     ? error.response.data
+  //       ? error.response.data.message
+  //         : JSON.stringify(error.response.data, null, 2)
+  //       : error.message;
+  // }
+  // fetchSecureData(){
+  //   axios.get('/api/secure-data').then(response => {
+  //     this.setState({ secureDataResponse: JSON.stringify(response.data, null, 2)});
+  //   }).catch(error => {
+  //     this.setState({ secureDataResponse: this.getMessage(error) })
+  //   })
+  // }
   // filterComic(character){
   //   axios.get('/api/filtercomics', {character}).then(r => {this.setState({
   //     comics: r.data
@@ -71,10 +97,15 @@ componentDidMount() {
 // }
   render() {
    let display = this.state.comics.map((e,i) => { return (<ComicsList key={e.id} comic={e} deleteComic={this.deleteComic} editComic={this.editComic}/>)
+  //  const { user, secureDataResponse } = this.state;
+  //  const userData = JSON.stringify(user, null, 2);
    })
     return (
       <div className="App">
       <Head />
+      <button onClick={this.login}>Sign-in</button>
+      {' '}
+      <button onClick={this.logout}>Sign-out</button>
       <span>
       <AddComics addComic={this.addComic}/>
       </span>
