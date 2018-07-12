@@ -1,6 +1,7 @@
+let id = 0
 let comics = [
     {
-    id: 0,
+    id: id++,
     character: "Deadpool",
     title: "Despicable Deadpool (2017) #297",
     pageCount: '22 pages',
@@ -10,7 +11,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 1,
+    id: id++,
     character: "Deadpool",
     title: "Deadpool Vs. The Punisher (Trade Paperback)",
     pageCount: '112 pages',
@@ -20,7 +21,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 2,
+    id: id++,
     character: "Deadpool",
     title: "Spider-Man/Deadpool (2016) #29",
     pageCount: '21 pages',
@@ -30,7 +31,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 3,
+    id: id++,
     character: "Black Panther",
     title: "Rise of the Black Panther (2018) #3",
     pageCount: '24 pages',
@@ -40,7 +41,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 4,
+    id: id++,
     character: "Black Panther",
     title: "Black Panther: World of Wakanda (Trade Paperback)",
     pageCount: '160 pages',
@@ -50,7 +51,7 @@ let comics = [
     purchased: 'No'
 },
 {    
-    id: 5,
+    id: id++,
     character: "Black Panther",
     title: "Black Panther (2016) #170",
     pageCount: '27 pages',
@@ -60,7 +61,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 6,
+    id: id++,
     character: "Spider-Man",
     title: "Amazing Spider-Man: The Clone Conspiracy (Trade Paperback)",
     pageCount: '520 pages',
@@ -70,7 +71,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 7,
+    id: id++,
     character: "Spider-Man",
     title: "Peter Parker: The Spectacular Spider-Man (2017) #300",
     pageCount: '50 pages',
@@ -80,7 +81,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 8,
+    id: id++,
     character: "Spider-Man",
     title: "The Amazing Spider-Man (2017) #32",
     pageCount: '22 pages',
@@ -90,7 +91,7 @@ let comics = [
     purchased: 'No '
 },
 {
-    id: 9,
+    id: id++,
     character: "Iron Man",
     title: "Iron Man: Hong Kong Heroes (2018) #1",
     pageCount: '22 pages',
@@ -100,7 +101,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 10,
+    id: id++,
     character: "Iron Man",
     title: "International Iron Man (Trade Paperback)",
     pageCount: '160 pages',
@@ -110,7 +111,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 11,
+    id: id++,
     character: "Iron Man",
     title: "Invincible Iron Man (2016) #597",
     pageCount: '19 pages',
@@ -120,7 +121,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 12,
+    id: id++,
     character: "Wolverine",
     title: "Generations: Wolverine & All-New Wolverine (2017) #1",
     pageCount: '33 pages',
@@ -130,7 +131,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 13,
+    id: id++,
     character: "Wolverine",
     title: "Wolverine by Claremont & Miller (Trade Paperback)",
     pageCount: '144 pages',
@@ -140,7 +141,7 @@ let comics = [
     purchased: 'No'
 },
 {
-    id: 14,
+    id: id++,
     character: "Wolverine",
     title: "X-Men: Days of Future Past (Trade Paperback)",
     pageCount: '144 pages',
@@ -150,7 +151,7 @@ let comics = [
     purchased: 'No'
 },
 {    
-    id: 15,
+    id: id++,
     character: "Captain America",
     title: "Captain America: The Adventures of Captain America (Trade Paperback)",
     pageCount: '304 pages',
@@ -160,7 +161,7 @@ let comics = [
     purchased: 'No'
 },
 {    
-    id: 16,
+    id: id++,
     character: "Captain America",
     title: "Captain America (2017) #698",
     pageCount: '23 pages',
@@ -170,7 +171,7 @@ let comics = [
     purchased: 'No'
 },
 {    
-    id: 17,
+    id: id++,
     character: "Captain America",
     title: "Captain America: Steve Rogers (2016) #7",
     pageCount: '27 pages',
@@ -183,9 +184,9 @@ let comics = [
 
 module.exports = {
     addComic: (req,res) => {
-        const {id, character, title, pageCount, price, cover, purchase,purchased} = req.body;
+        const {character, title, pageCount, price, cover, purchase,purchased} = req.body;
         comics.push({
-            id: comics.length + 1,
+            id: id++,
             character: character,
             title: title,
             pageCount: pageCount,
@@ -194,28 +195,14 @@ module.exports = {
             purchase: purchase,
             purchased: purchased
         })
+        id = id++
         res.status(200)
         .json(comics)
-        // .catch(err => console.log(err));
     },
     read: (req,res) => {
         res.status(200)
         .json(comics);
     },
-    // filterComic: (req,res) => {
-        
-    //     const {character} = req.params;
-    //     let list = comics.filter(e => {{character}
-    //         if
-    //         (e.character === character)
-    //         {
-    //             return e;
-    //         }
-    //         console.log(list);
-    // }); 
-    //     res.status(200)
-    //     .json(list);
-    // },
     editComic: (req,res) => {
        const editId = req.params.id;
        const comicEdit = comics.forEach((el,i) => {
@@ -239,8 +226,5 @@ module.exports = {
             }});
         res.status(200)
         .json(comics);
-    },
-    read: (req,res) => {
-        return comics
     }
 }
