@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import './ComicsList.css'
 
 class ComicsList extends Component {
 render(){
     return (
-        <div>
+        <div className='inner'>
            <h4>{this.props.comic.character}</h4>
            <p>{this.props.comic.title}</p>
            <p>{this.props.comic.pageCount}</p>

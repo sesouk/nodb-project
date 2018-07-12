@@ -48,10 +48,10 @@ class App extends Component {
     return (
       <div className="App">
       <Head />
-      <span>
+      <div className='input-container'>
       <AddComics addComic={this.addComic}/>
-      </span>
-      <div>
+      </div>
+      <div className='container'>
       {display}
       </div>
       <Foot />

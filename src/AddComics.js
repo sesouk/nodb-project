@@ -54,15 +54,31 @@ class AddComics extends Component {
     render(){
         let {character, title, pageCount, price, cover, purchase,purchased} =  this.state;
         return (
-            <div>
-              <input placeholder='Character' onChange={e => this.characterAdd(e.target.value)}/>
-              <input placeholder='Comic Title' onChange={e => this.titleAdd(e.target.value)}/>
-              <input placeholder='# of Pages' onChange={e => this.pageCountAdd(e.target.value)}/>
-              <input placeholder='Price' onChange={e => this.priceAdd(e.target.value)}/>
-              <input placeholder='Link to Cover' onChange={e => this.coverAdd(e.target.value)}/>
-              <input placeholder='Link to Buy' onChange={e => this.purchaseAdd(e.target.value)}/>
-              <input placeholder='Own it?' onChange={e => this.purchasedAdd(e.target.value)}/>
-              <button onClick={()=>{this.props.addComic({character, title, pageCount, price, cover, purchase,purchased})}}>Add Comic</button>
+            <div className='input-div'>
+              <div>
+                <input placeholder='Character' onChange={e => this.characterAdd(e.target.value)}/>
+							</div>
+							<div>
+                <input placeholder='Comic Title' onChange={e => this.titleAdd(e.target.value)}/>
+							</div>
+							<div>
+                <input placeholder='# of Pages' onChange={e => this.pageCountAdd(e.target.value)}/>
+							</div>
+							<div>
+                <input placeholder='Price' onChange={e => this.priceAdd(e.target.value)}/>
+							</div>
+							<div>
+                <input placeholder='Link to Cover' onChange={e => this.coverAdd(e.target.value)}/>
+							</div>
+							<div>
+                <input placeholder='Link to Buy' onChange={e => this.purchaseAdd(e.target.value)}/>
+							</div>
+							<div>
+                <input placeholder='Own it?' onChange={e => this.purchasedAdd(e.target.value)}/>
+							</div>
+							<div>
+                <button onClick={()=>{this.props.addComic({character, title, pageCount, price, cover, purchase,purchased})}}>Add Comic</button>
+							</div>
             </div>   
         );
     }

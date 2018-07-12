@@ -1,8 +1,89 @@
 .App {
   text-align: center;
+  background-color: mediumaquamarine;
 }
 img {
   width: 10em
 }
-
-
+p {
+  font-size: 10pt;
+}
+div.foot {
+  font-size: 14pt
+}
+img.logo {
+  width: 1em;
+  padding: 0;
+  margin: 0
+}
+div.head {
+  font-size: 20pt
+}
+img.logo {
+  width: 1em;
+  padding: 0;
+  margin: 0
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.inner {
+  border: solid 1px black;
+  min-height: 508px
+}
+input {
+  background-color: mediumaquamarine;
+  border: solid 1px black;
+  padding: 10px;
+}
+input:focus {
+  background-color: aliceblue
+}
+.input-container {
+  padding: 10px
+}
+.input-div > * {
+  display: inline-block;
+  padding: 2px
+}
+button {
+  color: mediumaquamarine;
+  background-color:black;
+  border: none;
+  padding: 10px
+}
+a {
+  text-decoration: none;
+  color: black
+}
+@media (max-width: 968px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 784px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 524px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+}
