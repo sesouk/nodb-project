@@ -18,3 +18,9 @@ This was my first full-stack web-app without a database and several technologies
 * Express
 * Axios
 #### Quick Look at Preme Comics
+Desktop View:
+![Image of Desktop View](https://github.com/sesouk/nodb-project/blob/master/Desktop-PC.png)
+iPad View:
+![Image of iPad View](https://github.com/sesouk/nodb-project/blob/master/Ipad-PC.png)
+Mobile View:
+![Image of iPad View](https://github.com/sesouk/nodb-project/blob/master/Iphone-PC.png)
